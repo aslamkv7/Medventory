@@ -20,7 +20,6 @@ header {
 }
 
 main {
-  height: calc(100vh - 70px);
   display: flex;
   flex-direction: row;
 }

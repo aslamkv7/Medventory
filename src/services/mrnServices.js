@@ -1,21 +1,17 @@
-// src/services/mrnService.js
 export async function fetchMRNById(mrnId) {
-  console.log("Calling API with MRN ID:", mrnId); // ✅ log here
-  const res = await fetch(`http://localhost:3000/api/mrn?mrnId=${mrnId}`);
-  console.log("Fetch status:", res.status); // ✅ log HTTP status
+  const res = await fetch(`/api/mrn?mrnId=${encodeURIComponent(mrnId)}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) throw new Error("MRN not found");
-  const data = await res.json();
-  console.log("Data received from API:", data); // ✅ log response
-  return data;
+  return res.json();
 }
 
 export async function fetchMRN(from, length) {
-  const res = await fetch(`http://localhost:3000/api/mrn?from=${from}&length=${length}`);
-  console.log("Fetch status:", res.status); // ✅ log HTTP status
+  const res = await fetch(`/api/mrn?from=${from}&length=${length}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) throw new Error("MRN not found");
-  const data = await res.json();
-  console.log("Data received from API:", data); // ✅ log response
-  return data;
+  return res.json();
 }

@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 
-// Helper function to generate a random ID
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
-// Data for all 20 MRN details
+// Mock MRN details used by the stock receive screens.
 const mrnDetails = [
     {
         issueNo: 'ISS-1001',
@@ -618,31 +617,53 @@ const mrnDetails = [
 },
 ];
 
+// Some seeded rows are duplicated in the fixture. Normalize once for stable paging.
+const uniqueMrnDetails = Array.from(
+  new Map(mrnDetails.map((mrn) => [`${mrn.issueNo}|${mrn.mrnId}`, mrn])).values()
+);
+
 /**
  * Handles GET requests for a specific MRN detail page.
  * @param {object} request - The incoming request object.
- * @param {object} context - An object containing route parameters.
  * @returns {object} A NextResponse object with the requested MRN data or an error.
  */
-export async function GET(request, { params }) {
+export async function GET(request) {
   // Extract query params
   const { searchParams } = new URL(request.url);
   const from = searchParams.get("from");
   const length = searchParams.get("length");
 
-  // Extract route param (if you set [mrnId] in your route folder)
-  const { mrnId } = params || {};
+  const mrnId = searchParams.get('mrnId');
 
   if (mrnId) {
-    const mrnDetail = mrnDetails.find(mrn => mrn.mrnId === mrnId);
-    return NextResponse.json(mrnDetail || { error: "Not found" }, { status: mrnDetail ? 200 : 404 });
-  }
-
-  if (from !== null && length !== null) {
+    const mrnDetail = uniqueMrnDetails.find((mrn) => mrn.mrnId === mrnId);
     return NextResponse.json(
-      mrnDetails.slice(parseInt(from), parseInt(from) + parseInt(length))
+      mrnDetail || { error: "Not found" },
+      { status: mrnDetail ? 200 : 404 }
     );
   }
 
-  return NextResponse.json(mrnDetails);
+  if (from !== null && length !== null) {
+    const start = Number.parseInt(from, 10);
+    const size = Number.parseInt(length, 10);
+
+    if (Number.isNaN(start) || Number.isNaN(size) || size < 1 || start < 0) {
+      return NextResponse.json(
+        { error: "Invalid pagination params" },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        rows: uniqueMrnDetails.slice(start, start + size),
+        total: uniqueMrnDetails.length,
+      }
+    );
+  }
+
+  return NextResponse.json({
+    rows: uniqueMrnDetails,
+    total: uniqueMrnDetails.length,
+  });
 }

@@ -1,9 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Theme, ThemeContext } from "@radix-ui/themes";
-import SideBar from "@/components/SideBar";
-import Header from "@/components/Header";
-
+import { Theme } from "@radix-ui/themes";
+import SideBar from '../components/SideBar';
+import Header from "../components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +26,10 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Theme>
-         <header>
-          <Header/>
-         </header>
-          <main>
-            <SideBar/>
-             {children}
+          <Header />
+          <main className="flex min-h-[calc(100vh-70px)] items-stretch">
+            <SideBar />
+            <section className="min-w-0 flex-1">{children}</section>
           </main>
         </Theme>
       </body>
