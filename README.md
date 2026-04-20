@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Medventory
 
-## Getting Started
+Medventory is a Next.js app (App Router) with an internal mock API route (`/api/mrn`) and no required environment variables.
 
-First, run the development server:
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Host on Vercel (Recommended)
 
-To learn more about Next.js, take a look at the following resources:
+1. Push this repo to GitHub/GitLab/Bitbucket.
+2. In Vercel, click **Add New Project** and import the repository.
+3. Keep defaults:
+   - Framework: `Next.js`
+   - Build command: `npm run build`
+   - Output: `.next` (auto-detected)
+4. Deploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No environment variables are needed for the current app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Host with Docker (Any VPS/Cloud)
 
-## Deploy on Vercel
+Build and run:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker build -t medventory .
+docker run -d --name medventory -p 3000:3000 medventory
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open `http://<your-server-ip>:3000`.
+
+## Useful References
+
+- Next.js deployment docs: https://nextjs.org/docs/app/building-your-application/deploying
+- Vercel docs: https://vercel.com/docs
