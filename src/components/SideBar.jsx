@@ -30,15 +30,15 @@ export default function SideBar() {
           setPendingInventoryOpen(false);
         }
       }}
-      className={`min-h-screen overflow-hidden bg-blue-500 py-3 transition-[width,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        collapsed ? "w-[84px] px-2" : "w-[280px] px-6"
+      className={`min-h-0 overflow-hidden bg-blue-500 py-3 transition-[width,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:min-h-screen ${
+        collapsed ? "w-full px-2 md:w-[84px]" : "w-full px-4 sm:px-6 md:w-[280px]"
       }`}
     >
       <div className={`mb-1 flex ${collapsed ? "justify-center" : "justify-end"}`}>
         <button
           type="button"
           onClick={() => setCollapsed((prev) => !prev)}
-          className="rounded p-1 text-white transition-colors duration-200 hover:bg-blue-400"
+          className="rounded p-2 text-white transition-colors duration-200 hover:bg-blue-400 md:p-1"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? (
@@ -51,7 +51,7 @@ export default function SideBar() {
 
       <Link
         href="/"
-        className={`my-4 flex flex-row rounded px-1 py-1 transition-colors duration-200 hover:bg-blue-400 ${
+        className={`my-3 flex flex-row rounded px-2 py-2 transition-colors duration-200 hover:bg-blue-400 md:my-4 md:px-1 md:py-1 ${
           collapsed ? "justify-center" : "items-center gap-2"
         }`}
         title="Home"

@@ -11,7 +11,7 @@ function FilterMenu({ label, value, options, onSelect, scrollable = false }) {
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger asChild>
-        <Button variant="soft" className="min-w-32 justify-between gap-2">
+        <Button variant="soft" className="w-full justify-between gap-2 sm:w-auto sm:min-w-32">
           <span className="truncate">{value || label}</span>
           <ChevronDownIcon
             className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
@@ -58,23 +58,23 @@ export default function Filter({
   };
 
   return (
-    <Box maxHeight="120px" className="p-4 rounded-t-md">
+    <Box className="rounded-t-md p-0 sm:p-4">
       <div className="flex items-center gap-3 flex-wrap">
         <TextField.Root
           placeholder="Issue No."
           value={value.issueNo}
           onChange={(e) => update("issueNo", e.target.value)}
-          className="w-40 border border-gray-200 rounded-md"
+          className="w-full rounded-md border border-gray-200 sm:w-40"
         />
 
         <TextField.Root
           placeholder="MRN No."
           value={value.mrnId}
           onChange={(e) => update("mrnId", e.target.value)}
-          className="w-40 border border-gray-200 rounded-md"
+          className="w-full rounded-md border border-gray-200 sm:w-40"
         />
 
-        <TextField.Root className="w-40 border border-gray-200 rounded-md px-2">
+        <TextField.Root className="w-full rounded-md border border-gray-200 px-2 sm:w-40">
           <input
             type="date"
             value={value.fromDate}
@@ -84,7 +84,7 @@ export default function Filter({
           <TextField.Slot side="right" />
         </TextField.Root>
 
-        <TextField.Root className="w-40 border border-gray-200 rounded-md px-2">
+        <TextField.Root className="w-full rounded-md border border-gray-200 px-2 sm:w-40">
           <input
             type="date"
             value={value.toDate}

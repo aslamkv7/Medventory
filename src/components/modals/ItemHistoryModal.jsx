@@ -11,7 +11,7 @@ export default function ItemHistoryModal({ open, onOpenChange, history }) {
         <Dialog.Overlay className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
 
         {/* Modal Content */}
-        <Dialog.Content className="fixed left-1/2 top-1/2 w-[650px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white shadow-2xl">
+        <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[90vh] w-[calc(100vw-2rem)] max-w-[650px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white shadow-2xl">
           {/* Header with blue background */}
           <div className="flex items-center justify-between bg-blue-600 px-4 py-3">
             <Dialog.Title className="text-lg font-semibold text-white">
@@ -25,15 +25,15 @@ export default function ItemHistoryModal({ open, onOpenChange, history }) {
           </div>
 
           {/* Table */}
-          <div className="max-h-[400px] overflow-y-auto p-4">
-            <table className="w-full border-collapse text-sm">
+          <div className="max-h-[70vh] overflow-auto p-4">
+            <table className="w-max min-w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-gray-100 text-left">
-                  <th className="px-3 py-2 font-medium">Item Name</th>
-                  <th className="px-3 py-2 font-medium">Batch</th>
-                  <th className="px-3 py-2 font-medium">Qty</th>
-                  <th className="px-3 py-2 font-medium">Date/Time</th>
-                  <th className="px-3 py-2 font-medium">Requested User</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Item Name</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Batch</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Qty</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Date/Time</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Requested User</th>
                 </tr>
               </thead>
               <tbody>

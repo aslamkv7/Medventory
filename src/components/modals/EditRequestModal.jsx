@@ -11,7 +11,7 @@ export default function EditRequestModal({ open, onOpenChange, rowData, onSave, 
         <Dialog.Overlay className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
 
         {/* Modal Content */}
-        <Dialog.Content className="fixed left-1/2 top-1/2 w-[680px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-md bg-white shadow-xl">
+        <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[90vh] w-[calc(100vw-2rem)] max-w-[680px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-md bg-white shadow-xl">
           
           {/* Header */}
           <div className="flex items-center justify-between bg-blue-600 px-4 py-2">
@@ -34,30 +34,30 @@ export default function EditRequestModal({ open, onOpenChange, rowData, onSave, 
               onSave(updated);
               onOpenChange(false);
             }}
-            className="p-5 text-sm space-y-4"
+            className="max-h-[calc(90vh-44px)] space-y-4 overflow-y-auto p-4 text-sm sm:p-5"
           >
             {/* Row 1 */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <InputField label="Item Code *" name="itemCode" defaultValue={rowData?.itemCode} />
               <InputField label="Item Description *" name="itemDesc" defaultValue={rowData?.itemName} />
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <SelectField label="Item Type *" name="itemType" defaultValue={rowData?.itemType} options={["Raw", "Finished"]} />
               <SelectField label="UOM *" name="uom" defaultValue={rowData?.uom} options={["NUM", "KG"]} />
               <InputField label="Required Qty *" name="reqQty" type="number" defaultValue={rowData?.reqQty} />
             </div>
 
             {/* Row 3 */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <InputField label="Approved Qty" name="apprQty" type="number" defaultValue={rowData?.apprQty} />
               <InputField label="Issued Qty" name="issuedQty" type="number" defaultValue={rowData?.issuedQty} />
               <InputField label="Received Qty" name="recQty" type="number" defaultValue={rowData?.recQty} />
             </div>
 
             {/* Row 4 */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <InputField label="Rejected Qty" name="rejQty" type="number" defaultValue={rowData?.rejQty} />
               <InputField label="Balance Qty" name="balQty" type="number" defaultValue={rowData?.balQty} />
             </div>

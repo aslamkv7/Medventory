@@ -130,20 +130,20 @@ export default function MRNPage() {
   }, [filteredRows, page]);
 
   return (
-    <div className="bg-gray-100 pt-6 pr-6 pl-6">
-      <Box className="bg-white rounded-sm shadow p-3 px-5">
-        <div className="flex justify-between items-center">
-          <h1 className="text-lg font-semibold w-max">Stock Receive</h1>
+    <div className="bg-gray-100 p-3 sm:p-6">
+      <Box className="rounded-sm bg-white p-3 shadow sm:px-5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="text-lg font-semibold">Stock Receive</h1>
           <button
             onClick={() => router.push("/stock-receive/add-item")}
-            className="bg-blue-500 text-white px-6 py-1 rounded font-medium hover:bg-blue-400 transition"
+            className="rounded bg-blue-500 px-6 py-2 font-medium text-white transition hover:bg-blue-400 sm:py-1"
           >
             Add
           </button>
         </div>
         <hr className="mt-3 border-gray-300" />
 
-        <div className="flex items-center justify-between mt-3">
+        <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <TextField.Root
             value={searchText}
             onChange={(e) => {
@@ -151,7 +151,7 @@ export default function MRNPage() {
               setPage(1);
             }}
             placeholder="Search the docs..."
-            className="flex items-center gap-2 border border-gray-100 rounded-lg px-3 py-2 w-64 sm:w-80 md:w-96 max-w-full"
+            className="flex w-full max-w-full items-center gap-2 rounded-lg border border-gray-100 px-3 py-2 sm:w-80 md:w-96"
           >
             <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
@@ -161,7 +161,7 @@ export default function MRNPage() {
         </div>
       </Box>
 
-      <Box height="auto" className="bg-white rounded-sm shadow p-4 mt-2">
+      <Box height="auto" className="mt-2 rounded-sm bg-white p-3 shadow sm:p-4">
         <Filter
           value={filters}
           onChange={(next) => {
@@ -173,9 +173,9 @@ export default function MRNPage() {
           statusOptions={statusOptions}
         />
         <MRNTable rows={visibleRows} loading={loading} />
-        <div className="m-3">
+        <div className="m-0 mt-3 sm:m-3">
           <h3 className="font-bold my-1">Color Indication</h3>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <div className="flex items-center gap-2">
               <Box className="w-4 h-4 bg-green-300 border border-gray-400" />
               <span className="text-sm font-medium">Rejected Items Color</span>

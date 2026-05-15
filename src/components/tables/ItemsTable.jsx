@@ -310,7 +310,7 @@ export default function ItemsTable({ mrnId, onActionsReady }) {
   ];
 
   return (
-    <div className="px-4 bg-white">
+    <div className="bg-white px-0 sm:px-4">
       <GenericTable
         columns={itemsTable}
         data={mrnData}

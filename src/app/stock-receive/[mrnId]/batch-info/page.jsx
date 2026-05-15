@@ -90,33 +90,33 @@ export default function BatchInfo() {
   };
 
   return (
-    <div className="bg-gray-100 pt-6 pr-6 pl-6">
-      <Box className="bg-white rounded-sm shadow p-1 py-2">
-        <div className="flex justify-between p-2 px-4 items-center">
-          <div className="flex justify-start gap-1">
+    <div className="bg-gray-100 p-3 sm:p-6">
+      <Box className="rounded-sm bg-white p-1 py-2 shadow">
+        <div className="flex flex-col gap-3 p-2 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+          <div className="flex min-w-0 justify-start gap-2">
             <button
               onClick={() => router.back()}
-              className="flex items-center rounded-md hover:bg-gray-200 transition"
+              className="flex min-h-10 min-w-10 items-center justify-center rounded-md transition hover:bg-gray-200 sm:min-h-0 sm:min-w-0"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-lg font-semibold w-max">Stock Receive</h1>
+            <h1 className="truncate text-lg font-semibold">Stock Receive</h1>
           </div>
 
-          <div className="flex justify-end gap-2">
-            <button className="px-3 py-1 rounded font-medium border border-gray-400 hover:bg-grey-400 transition">
+          <div className="flex flex-wrap justify-start gap-2 sm:justify-end">
+            <button className="rounded border border-gray-400 px-3 py-2 font-medium transition hover:bg-grey-400 sm:py-1">
               ...
             </button>
 
             <button
               onClick={handleReceiveStock}
-              className="bg-blue-500 text-white px-6 py-1 rounded font-medium text-sm hover:bg-blue-400 transition"
+              className="rounded bg-blue-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-400 sm:px-6 sm:py-1"
             >
               Receive Stock
             </button>
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 text-white px-6 py-1 rounded font-medium text-sm hover:bg-blue-400 transition"
+              className="rounded bg-blue-500 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-400 sm:py-1"
             >
               Submit
             </button>
@@ -133,8 +133,8 @@ export default function BatchInfo() {
         <div>Loading...</div>
       )}
 
-      <div className="m-3 space-y-4">
-        <div className="flex gap-2">
+      <div className="m-0 mt-3 space-y-4 sm:m-3">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={handleAddRow}
             className="px-3 py-2 border border-gray-400 rounded-md text-sm font-medium bg-white hover:bg-gray-100 transition"
@@ -149,9 +149,9 @@ export default function BatchInfo() {
           </button>
         </div>
 
-        <div className="m-3">
+        <div className="m-0 sm:m-3">
           <h3 className="font-bold my-1">Color Indication</h3>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <div className="flex items-center gap-2">
               <Box className="w-4 h-4 bg-orange-300 border border-gray-400" />
               <span className="text-sm font-medium">Item Not Received</span>

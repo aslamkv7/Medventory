@@ -1,10 +1,21 @@
 "use client";
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Boxes } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+const menuItems = [
+  { label: "Raise Requisition" },
+  { label: "Issue Requisition" },
+  { label: "Direct Issue" },
+  { label: "Stock Receive", href: "/stock-receive", suffix: ">" },
+  { label: "Revert In-Transit Stock" },
+  { label: "Location Stock Consumption" },
+  { label: "Consignment Stock Manage" },
+  { label: "Consignment Stock Return" },
+  { label: "Item Request" },
+];
 
 export default function InventoryDropdown({
   collapsed = false,
@@ -39,61 +50,49 @@ export default function InventoryDropdown({
   }
 
   return (
-    <DropdownMenu.Root open={open} onOpenChange={setOpen}>
-      <DropdownMenu.Trigger asChild>
-        <button
-          title="Inventory Management"
-          className="h-16 w-full bg-white text-blue-500 flex items-center justify-between text-left text-sm font-semibold px-6 rounded-sm cursor-pointer transition-shadow duration-200 hover:shadow-sm"
-        >
-          <span>Inventory Management</span>
-          <ChevronDownIcon
-            className={`w-4 h-4 ml-2 transition-transform duration-300 ${
-              open ? "rotate-180" : "rotate-0"
-            }`}
-          />
-        </button>
-      </DropdownMenu.Trigger>
+    <nav className="w-full" aria-label="Inventory navigation">
+      <button
+        type="button"
+        title="Inventory Management"
+        aria-expanded={open}
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex h-12 w-full items-center justify-between rounded-sm bg-white px-4 text-left text-sm font-semibold text-blue-500 transition-shadow duration-200 hover:shadow-sm md:h-16 md:px-6"
+      >
+        <span className="truncate">Inventory Management</span>
+        <ChevronDownIcon
+          className={`ml-2 h-4 w-4 shrink-0 transition-transform duration-300 ${
+            open ? "rotate-180" : "rotate-0"
+          }`}
+        />
+      </button>
 
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className="flex flex-col mt-1 text-white"
-          sideOffset={5}
-          align="center"
-        >
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Raise Requisition
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Issue Requisition
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Direct Issue
-          </DropdownMenu.Item>
-          <DropdownMenu.Item asChild>
-            <Link
-              href="/stock-receive"
-              className="block px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none"
-            >
-              Stock Receive {" >"}
-            </Link>
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Revert In-Transit Stock
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Location Stock Consumption
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Consignment Stock Manage
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Consignment Stock Return
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="px-6 py-2 font-medium text-sm rounded hover:bg-white hover:text-blue-600 cursor-pointer outline-none">
-            Item Request
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+      <div
+        className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out ${
+          open ? "mt-3 max-h-[520px] opacity-100" : "mt-0 max-h-0 opacity-0"
+        }`}
+      >
+        <div className="ml-4 flex flex-col gap-1 border-l border-white/30 pl-3 text-white md:ml-5 md:pl-4">
+          {menuItems.map((item) =>
+            item.href ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="block rounded px-3 py-2 text-sm font-medium leading-snug transition-colors hover:bg-white hover:text-blue-600"
+              >
+                {item.label} {item.suffix}
+              </Link>
+            ) : (
+              <button
+                key={item.label}
+                type="button"
+                className="rounded px-3 py-2 text-left text-sm font-medium leading-snug transition-colors hover:bg-white hover:text-blue-600"
+              >
+                {item.label}
+              </button>
+            )
+          )}
+        </div>
+      </div>
+    </nav>
   );
 }

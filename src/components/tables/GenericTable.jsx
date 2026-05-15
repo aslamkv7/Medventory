@@ -20,7 +20,7 @@ export default function GenericTable({
   selectedRowId = null,
 }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="w-full overflow-x-auto">
       <table className="border border-gray-300 text-sm w-max min-w-full">
         {/* Header */}
         <thead>
@@ -28,7 +28,7 @@ export default function GenericTable({
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="border px-6 py-3 text-left font-medium whitespace-nowrap"
+                className="whitespace-nowrap border px-3 py-3 text-left font-medium md:px-6"
               >
                 {col.header}
               </th>
@@ -61,7 +61,7 @@ export default function GenericTable({
                 {columns.map((col, colIndex) => (
                   <td
                     key={colIndex}
-                    className="px-6 py-1 whitespace-nowrap"
+                    className="whitespace-nowrap px-3 py-2 md:px-6 md:py-1"
                   >
                     {col.render ? col.render(row) : row[col.accessor]}
                   </td>

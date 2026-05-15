@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       >
         <Theme>
           <Header />
-          <main className="flex min-h-[calc(100vh-70px)] items-stretch">
+          <main className="flex min-h-[calc(100vh-70px)] flex-col items-stretch md:flex-row">
             <SideBar />
             <section className="min-w-0 flex-1">{children}</section>
           </main>

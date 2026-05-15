@@ -11,7 +11,7 @@ export default function BatchInfoModal({ open, onOpenChange, batches }) {
         <Dialog.Overlay className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
 
         {/* Modal Content */}
-        <Dialog.Content className="fixed left-1/2 top-1/2 w-[700px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white shadow-2xl">
+        <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[90vh] w-[calc(100vw-2rem)] max-w-[700px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white shadow-2xl">
           {/* Header */}
           <div className="flex items-center justify-between bg-blue-600 px-4 py-3">
             <Dialog.Title className="text-lg font-semibold text-white">
@@ -25,20 +25,20 @@ export default function BatchInfoModal({ open, onOpenChange, batches }) {
           </div>
 
           {/* Table */}
-          <div className="max-h-[400px] overflow-y-auto p-4">
-            <table className="w-full border-collapse text-sm">
+          <div className="max-h-[70vh] overflow-auto p-4">
+            <table className="w-max min-w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-gray-100 text-left">
-                  <th className="px-3 py-2 font-medium">Batch No</th>
-                  <th className="px-3 py-2 font-medium">Expiry Date</th>
-                  <th className="px-3 py-2 font-medium">Selling Price</th>
-                  <th className="px-3 py-2 font-medium">Unit Cost</th>
-                  <th className="px-3 py-2 font-medium">MRP</th>
-                  <th className="px-3 py-2 font-medium">Created Date</th>
-                  <th className="px-3 py-2 font-medium">Issued Qty</th>
-                  <th className="px-3 py-2 font-medium">Received Qty</th>
-                  <th className="px-3 py-2 font-medium">Net Received</th>
-                  <th className="px-3 py-2 font-medium">Remark</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Batch No</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Expiry Date</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Selling Price</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Unit Cost</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">MRP</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Created Date</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Issued Qty</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Received Qty</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Net Received</th>
+                  <th className="whitespace-nowrap px-3 py-2 font-medium">Remark</th>
                 </tr>
               </thead>
               <tbody>

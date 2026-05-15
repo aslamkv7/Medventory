@@ -14,7 +14,7 @@ export default function MRNFilterCard({ data }) {
   // }
 
   return (
-    <div className="grid grid-cols-5 gap-4 bg-white rounded-t-md shadow p-4">
+    <div className="grid grid-cols-1 gap-4 rounded-t-md bg-white p-4 shadow sm:grid-cols-2 lg:grid-cols-5">
       {/* Issue No */}
       <div className="flex flex-col gap-1">
         <Label className="text-sm font-medium text-gray-600">Issue No.</Label>

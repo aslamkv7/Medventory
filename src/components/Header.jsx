@@ -3,12 +3,12 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 export default function Header() {
   return (
-    <header className="flex items-center px-6 py-4 bg-white shadow gap-3">
+    <header className="flex flex-wrap items-center gap-3 bg-white px-4 py-3 shadow sm:px-6 sm:py-4">
       {/* Left side: Brand */}
-      <h1 className="text-xl font-semibold">Medventory</h1>
+      <h1 className="text-lg font-semibold sm:text-xl">Medventory</h1>
 
       {/* Right side: Search bar */}
-      <div className="ml-auto w-64">
+      <div className="order-last w-full sm:order-none sm:ml-auto sm:w-64">
         <TextField.Root
           placeholder="Search the docs…"
           className="flex items-center gap-2 border border-gray-100 rounded-lg px-3 py-2 w-full"
@@ -20,7 +20,7 @@ export default function Header() {
       </div>
 
       {/* Icons as square buttons */}
-      <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition">
+      <button className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 transition hover:bg-gray-100 sm:h-8 sm:w-8">
         <svg
           width="16"
           height="16"
@@ -37,7 +37,7 @@ export default function Header() {
         </svg>
       </button>
 
-      <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition">
+      <button className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 transition hover:bg-gray-100 sm:h-8 sm:w-8">
         <svg
           width="16"
           height="16"
@@ -54,7 +54,7 @@ export default function Header() {
         </svg>
       </button>
 
-      <button className="w-9 h-9 flex items-center justify-center border border-gray-300 rounded-full cursor-pointer hover:bg-gray-100 transition">
+      <button className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 transition hover:bg-gray-100 sm:h-9 sm:w-9">
         <svg
             width="15"
             height="15"
